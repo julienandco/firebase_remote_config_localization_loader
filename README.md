@@ -7,6 +7,15 @@ Lets you easily set up the internationalization of your app with files that are 
 ## Getting started
 
 * Make sure you are using [Easy Localization](https://pub.dev/packages/easy_localization) to internationalize your app, as this package provides an ```AssetLoader``` instance, which is defined in the Easy Localization package.
+* Add the dependency to the package to your ```pubspec.yaml```:
+
+```yaml
+dependencies:
+  firebase_remote_config_localization_loader:
+    git: 
+        url: https://github.com/julienandco/firebase_remote_config_localization_loader
+        ref: main
+```
 
 ## Usage
 
