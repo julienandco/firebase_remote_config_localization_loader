@@ -1,0 +1,3 @@
+library firebase_remote_config_localization_loader;
+
+export 'src/firebase_remote_config_localization_loader_base.dart';
