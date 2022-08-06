@@ -1,4 +1,4 @@
-# [packageName]
+# firebase_remote_config_localization_loader
 
 ## Features
 
