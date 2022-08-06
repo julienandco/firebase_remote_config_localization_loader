@@ -6,7 +6,7 @@ Lets you easily set up the internationalization of your app with files that are 
 
 ## Getting started
 
-* Make sure you are using [Easy Localization](https://pub.dev/packages/easy_localization) to internationalize your app, as this pacakge provides an AssetLoader instance, which is defined in the Easy Localization package.
+* Make sure you are using [Easy Localization](https://pub.dev/packages/easy_localization) to internationalize your app, as this package provides an ```AssetLoader``` instance, which is defined in the Easy Localization package.
 
 ## Usage
 
@@ -44,4 +44,4 @@ runApp(
 
 ## Additional information
 
-Feel free to contact me if you have any questions, open some Pull Requests, or want to contribute to this package.
+Feel free to contact me if you have any questions, open some pull requests, or want to contribute to this package.
