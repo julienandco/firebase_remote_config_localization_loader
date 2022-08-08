@@ -99,6 +99,7 @@ void main() {
       when(() => faultyRemoteConfig.getString('tran_en')).thenReturn('');
 
       await nullLoader.init();
+      await faultyLoader.init();
       await configLoader.init();
     });
 
