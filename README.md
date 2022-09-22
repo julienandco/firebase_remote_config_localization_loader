@@ -26,19 +26,22 @@ dependencies:
 final supportedLocales = [const Locale('de'), const Locale('en')]; // Add your supported locales here
 
 final localizationLoader =
-    FirebaseRemoteConfigLocalizationLoader(configData: 
-        FirebaseRemoteConfigData(
-        remoteConfigInstance: FirebaseRemoteConfig.instance,
-        supportedLocales: supportedLocales,
-        buildRemoteConfigStringFromLocale: (locale) => // Add your custom implementation here
-            'tran_${locale.languageCode}',
-        ),
+    FirebaseRemoteConfigLocalizationLoader(
+        configData: 
+            FirebaseRemoteConfigData(
+            remoteConfigInstance: FirebaseRemoteConfig.instance,
+            supportedLocales: supportedLocales,
+            buildRemoteConfigStringFromLocale: // Add your custom implementation here
+                (locale) => 
+                    'tran_${locale.languageCode}',
+            ),
+        fallbackAssetPath: '<your_path_to_the_local_translation_files>',
     );
 await localizationLoader.init();
 
 runApp(
     EasyLocalization(
-        path: '<your_path_to_the_local_translation_files>',
+        path: localizationLoader.path,
         assetLoader: localizationLoader.assetLoader,
         supportedLocales: supportedLocales,
         fallbackLocale: const Locale('de'),

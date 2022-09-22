@@ -1,6 +1,6 @@
 name: firebase_remote_config_localization_loader
 description: A wrapper class to easily load translation files from Firebase Remote Config.
-version: 1.0.0
+version: 1.1.0
 homepage:
 
 environment:

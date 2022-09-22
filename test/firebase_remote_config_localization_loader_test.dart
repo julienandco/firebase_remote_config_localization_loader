@@ -38,6 +38,7 @@ void main() {
         () async {
       final loader = FirebaseRemoteConfigLocalizationLoader(
         configData: null,
+        fallbackAssetPath: '.',
       );
       await loader.init();
       expect(loader.hasTranslationFileInRemoteConfig, false);
@@ -47,6 +48,7 @@ void main() {
         () async {
       final loader = FirebaseRemoteConfigLocalizationLoader(
         configData: faultyConfigData,
+        fallbackAssetPath: '.',
       );
       await loader.init();
       expect(loader.hasTranslationFileInRemoteConfig, false);
@@ -56,6 +58,7 @@ void main() {
         () async {
       final loader = FirebaseRemoteConfigLocalizationLoader(
         configData: configData,
+        fallbackAssetPath: '.',
       );
       await loader.init();
       expect(loader.hasTranslationFileInRemoteConfig, true);
@@ -82,14 +85,17 @@ void main() {
 
     final nullLoader = FirebaseRemoteConfigLocalizationLoader(
       configData: null,
+      fallbackAssetPath: '.',
     );
 
     final faultyLoader = FirebaseRemoteConfigLocalizationLoader(
       configData: faultyConfigData,
+      fallbackAssetPath: '.',
     );
 
     final configLoader = FirebaseRemoteConfigLocalizationLoader(
       configData: configData,
+      fallbackAssetPath: '.',
     );
 
     setUp(() async {
