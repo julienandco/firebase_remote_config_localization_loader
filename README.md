@@ -32,7 +32,7 @@ final localizationLoader =
         supportedLocales: supportedLocales,
         buildRemoteConfigStringFromLocale: (locale) => // Add your custom implementation here
             'tran_${locale.languageCode}',
-        );
+        ),
     );
 await localizationLoader.init();
 
