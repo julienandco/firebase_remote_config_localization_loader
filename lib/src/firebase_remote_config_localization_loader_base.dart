@@ -26,6 +26,7 @@ class FirebaseRemoteConfigData {
 
 class FirebaseRemoteConfigLocalizationLoader {
   FirebaseRemoteConfigLocalizationLoader({
+    required this.fallbackAssetPath,
     this.configData,
   });
 
@@ -36,26 +37,33 @@ class FirebaseRemoteConfigLocalizationLoader {
   /// files with a [RootBundleAssetLoader].
   final FirebaseRemoteConfigData? configData;
 
-  bool _hasTranslationFileInRemoteConfig = false;
+  ///
+  /// The path to the default translation file stored in your app's assets.
+  final String fallbackAssetPath;
+
+  bool _hasTranslationFileInRemoteConfig = true;
 
   Future<void> init() async {
-    if (configData != null) {
-      for (var locale in configData!.supportedLocales) {
-        final str = configData!.remoteConfigInstance
-            .getString(configData!.buildRemoteConfigStringFromLocale(locale));
-        if (str.isEmpty) {
-          // abort as soon as you cannot find a translation file in the remote
-          // config for a locale.
-          return;
-        }
-      }
-
-      // if you get here, all translation files are in the remote config.
-      _hasTranslationFileInRemoteConfig = true;
+    if (configData == null) {
+      _hasTranslationFileInRemoteConfig = false;
+      return;
     }
+    for (var locale in configData!.supportedLocales) {
+      final str = configData!.remoteConfigInstance
+          .getString(configData!.buildRemoteConfigStringFromLocale(locale));
+      if (str.isEmpty) {
+        // abort as soon as you cannot find a translation file in the remote
+        // config for a locale.
+        _hasTranslationFileInRemoteConfig = false;
+        return;
+      }
+    }
+    // if you get here, all translation files are in the remote config.
   }
 
-  AssetLoader get assetLoader =>
+  String get path => _hasTranslationFileInRemoteConfig ? '.' : assetPath;
+  String get assetPath => fallbackAssetPath;
+  dynamic get assetLoader =>
       _hasTranslationFileInRemoteConfig && configData != null
           ? FirebaseRemoteConfigLoader(
               remoteConfig: configData!.remoteConfigInstance,
