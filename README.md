@@ -54,6 +54,20 @@ runApp(
 ...
 ```
 
+🚨 If you did not use `FirebaseRemoteConfig` before, you need to initialize it first. You can do this by adding the following code to the `main.dart` of your application, BEFORE instantiating the `FirebaseRemoteConfigLocalizationLoader`:
+
+```dart
+final remoteConfig = FirebaseRemoteConfig.instance;
+
+await remoteConfig.setConfigSettings(
+    RemoteConfigSettings(
+      fetchTimeout: const Duration(minutes: 1),
+      minimumFetchInterval: const Duration(hours: 1),
+    ),
+  );
+await remoteConfig.fetchAndActivate();
+```
+
 ## Additional information
 
 Feel free to contact me if you have any questions, open some pull requests, or want to contribute to this package.
