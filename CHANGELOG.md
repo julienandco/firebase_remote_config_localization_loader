@@ -1,5 +1,9 @@
 # Change Log 🪵
 
+## 1.1.1
+
+* Updated a dependency to the latest release.
+
 ## 1.1.0
 
 * **BREAKING**: `FirebaseRemoteConfigLocalizationLoader` now requires a `fallbackAssetPath`, that will be used when fetching the remote config files fails.
